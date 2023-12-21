@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:notely_app/model/note_card_model.dart';
-import 'package:notely_app/view/bottom_bar_screen/bottom_bar_screen.dart';
+import 'package:notely_app/view/home_screen/home_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: BottomBarScreen(),
+      home: HomeScreen(),
     );
   }
 }

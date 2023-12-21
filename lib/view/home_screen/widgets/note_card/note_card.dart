@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:notely_app/utils/color_constant.dart';
 import 'package:notely_app/utils/textstyle_constant.dart';
+import 'package:notely_app/view/home_screen/widgets/note_card_fullview/note_card_fullview.dart';
 
 class NoteCard extends StatefulWidget {
   const NoteCard(
@@ -28,78 +29,94 @@ class _NoteCardState extends State<NoteCard> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(10.0),
-      child: Container(
-        decoration: BoxDecoration(
-            color: primarycolorlight, borderRadius: BorderRadius.circular(20)),
-        padding: EdgeInsets.all(10.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                    decoration: BoxDecoration(
-                        color: Colors.grey.shade300,
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Padding(
-                      padding: const EdgeInsets.all(5.0),
-                      child: Text(
-                        widget.category,
-                        style: subtextdark,
-                      ),
-                    )),
-                Row(
-                  children: [
-                    IconButton(
-                        onPressed: widget.onEditPressed,
-                        icon: Icon(
-                          Icons.edit,
-                          color: primarycolordark,
-                        )),
-                    IconButton(
-                        onPressed: widget.onDeletePressed,
-                        icon: Icon(
-                          Icons.delete,
-                          color: primarycolordark,
-                        ))
-                  ],
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Text(
-              widget.title,
-              style: maintextdark,
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.9,
-              child: Text(
-                widget.description,
-                textAlign: TextAlign.justify,
-                maxLines: 3,
-                overflow: TextOverflow.ellipsis,
-                style: subtextdark,
+      child: InkWell(
+        onTap: () {
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) {
+              return NoteCardFullView(
+                category: widget.category,
+                title: widget.title,
+                description: widget.description,
+                date: widget.date,
+              );
+            },
+          ));
+        },
+        child: Container(
+          decoration: BoxDecoration(
+              color: primarycolorlight,
+              borderRadius: BorderRadius.circular(20)),
+          padding: EdgeInsets.all(10.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                      decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                              colors: [Colors.purple, Colors.red]),
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: Text(
+                          widget.category,
+                          style: subtextlight,
+                        ),
+                      )),
+                  Row(
+                    children: [
+                      IconButton(
+                          onPressed: widget.onEditPressed,
+                          icon: Icon(
+                            Icons.edit,
+                            color: primarycolordark,
+                          )),
+                      IconButton(
+                          onPressed: widget.onDeletePressed,
+                          icon: Icon(
+                            Icons.delete,
+                            color: primarycolordark,
+                          ))
+                    ],
+                  ),
+                ],
               ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text(
-                  widget.date,
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                widget.title,
+                style: maintextdark,
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.9,
+                child: Text(
+                  widget.description,
+                  textAlign: TextAlign.justify,
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
                   style: subtextdark,
-                )
-              ],
-            )
-          ],
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    widget.date,
+                    style: subtextdark,
+                  )
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );

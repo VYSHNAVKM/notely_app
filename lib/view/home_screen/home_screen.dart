@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:lottie/lottie.dart';
 import 'package:notely_app/controller/note_card_controller.dart';
 import 'package:notely_app/model/note_card_model.dart';
 import 'package:notely_app/utils/color_constant.dart';
 import 'package:notely_app/utils/textstyle_constant.dart';
+import 'package:notely_app/view/home_screen/widgets/drawer_screens/privacypolicy.dart';
+import 'package:notely_app/view/home_screen/widgets/drawer_screens/support.dart';
 import 'package:notely_app/view/home_screen/widgets/note_card/note_card.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -41,14 +45,85 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: bgcolor,
+      appBar: AppBar(
+        backgroundColor: bgcolor,
+        centerTitle: true,
+        title: Text(
+          'NOTELY',
+          style: maintextdark,
+        ),
+        actions: [
+          IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.search,
+                color: primarycolordark,
+              ))
+        ],
+      ),
+      drawer: Drawer(
+        child: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(colors: [Colors.purple, Colors.red])),
+          child: Column(
+            children: [
+              DrawerHeader(
+                  child: Center(
+                child: Text(
+                  'NOTELY',
+                  style: maintextlight,
+                ),
+              )),
+              ListTile(
+                title: Row(
+                  children: [
+                    Icon(
+                      Icons.privacy_tip_outlined,
+                      color: primarycolorlight,
+                      size: 30,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text('Privacy Policy', style: subtextlight),
+                  ],
+                ),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PrivacyPolicyScreen(),
+                      ));
+                },
+              ),
+              ListTile(
+                title: Row(
+                  children: [
+                    Icon(
+                      Icons.mail_outline_outlined,
+                      color: primarycolorlight,
+                      size: 30,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text('Support', style: subtextlight),
+                  ],
+                ),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SupportScreen(),
+                      ));
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
       body: _notes.isEmpty
-          ? Center(
-              child: Text('Empty notes',
-                  style: TextStyle(
-                      color: const Color.fromARGB(255, 43, 22, 22),
-                      fontSize: 20,
-                      fontWeight: FontWeight.w400)),
-            )
+          ? Center(child: Lottie.asset('assets/animation/empty.json'))
           : Column(
               children: [
                 Expanded(
@@ -119,6 +194,7 @@ class _HomeScreenState extends State<HomeScreen> {
         return StatefulBuilder(
             builder: (BuildContext context, StateSetter setState) {
           return Scaffold(
+            backgroundColor: bgcolor,
             body: SingleChildScrollView(
               padding: EdgeInsets.all(16.0),
               child: Container(
@@ -131,29 +207,23 @@ class _HomeScreenState extends State<HomeScreen> {
                     SizedBox(
                       height: 50,
                     ),
-                    Row(
-                      children: [
-                        IconButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            icon: Icon(
-                              Icons.arrow_back_ios,
-                              color: primarycolordark,
-                            )),
-                        SizedBox(
-                          width: 50,
-                        ),
-                        Text(
-                          isEditing ? 'Edit Note' : 'Add a New Note',
-                          style: TextStyle(
-                            fontSize: 20.0,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
+                    AppBar(
+                      backgroundColor: bgcolor,
+                      leading: IconButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          icon: Icon(
+                            Icons.arrow_back_ios,
+                            color: primarycolordark,
+                          )),
+                      centerTitle: true,
+                      title: Text(isEditing ? 'Edit Note' : 'Add a New Note',
+                          style: maintextdark),
                     ),
-                    SizedBox(height: 20.0),
+                    SizedBox(
+                      height: 70,
+                    ),
                     TextField(
                       decoration: InputDecoration(
                           border: OutlineInputBorder(),
@@ -236,18 +306,28 @@ class _HomeScreenState extends State<HomeScreen> {
                             } else {
                               Navigator.of(context).pop();
                               ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.only(
-                                              topLeft: Radius.circular(30),
-                                              topRight: Radius.circular(30))),
-                                      padding: EdgeInsets.all(20),
-                                      backgroundColor: Colors.grey,
-                                      content: Center(
-                                          child: Text(
-                                        "Please add full details",
-                                        style: TextStyle(fontSize: 18),
-                                      ))));
+                                SnackBar(
+                                  elevation: 5,
+                                  shape: RoundedRectangleBorder(
+                                      side: BorderSide(
+                                          width: 2,
+                                          color: Colors.grey,
+                                          style: BorderStyle.solid),
+                                      borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(30),
+                                          topRight: Radius.circular(30))),
+                                  backgroundColor: primarycolorlight,
+                                  content: Center(
+                                    child: Text(
+                                      "Please add full details ❗",
+                                      style: GoogleFonts.poppins(
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.red,
+                                          fontSize: 17),
+                                    ),
+                                  ),
+                                ),
+                              );
                             }
                           },
                           child: Text(

@@ -10,6 +10,7 @@ import 'package:notely_app/view/home_screen/widgets/drawer_screens/privacypolicy
 import 'package:notely_app/view/home_screen/widgets/drawer_screens/support.dart';
 import 'package:notely_app/view/home_screen/widgets/note_card/note_card.dart';
 import 'package:notely_app/view/search_screen/search_screen.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -19,31 +20,26 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final NoteCardController _noteController = NoteCardController();
-  late List<NoteCardModel> _notes = [];
-  int existingNoteIndex = -1;
   TextEditingController _categoryController = TextEditingController();
   TextEditingController _titleController = TextEditingController();
   TextEditingController _descriptionController = TextEditingController();
   TextEditingController _dateController = TextEditingController();
-
   Color selectedColor = Colors.grey;
-
+  bool isloading = true;
   @override
   void initState() {
     super.initState();
-    _loadNotes();
-  }
-
-  Future<void> _loadNotes() async {
-    final notes = await _noteController.loadEvents();
-    setState(() {
-      _notes = notes;
+    context.read<NoteCardController>().loadEvents();
+    Future.delayed(Duration(seconds: 1), () {
+      setState(() {
+        isloading = false;
+      });
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    var providerWatch = context.watch<NoteCardController>();
     return Scaffold(
       backgroundColor: bgcolor,
       appBar: AppBar(
@@ -126,40 +122,47 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-      body: _notes.isEmpty
-          ? Center(child: Lottie.asset('assets/animation/empty.json'))
-          : Column(
-              children: [
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: _notes.length,
-                    itemBuilder: (context, index) {
-                      final dateFormatter = DateFormat('dd-MM-yyyy');
-                      final note = _notes[index];
-                      final date = dateFormatter.format(note.date.toLocal());
-                      return NoteCard(
-                        onEditPressed: () {
-                          existingNoteIndex = index;
-                          _addOrEditNote(context, existingNote: note);
-                        },
-                        onDeletePressed: () async {
-                          await _noteController.deleteEvent(index);
-                          _loadNotes();
-                        },
-                        category: note.category,
-                        title: note.title,
-                        description: note.description,
-                        date: date,
-                      );
-                    },
-                  ),
-                ),
-              ],
-            ),
+      body: Consumer<NoteCardController>(
+        builder: (context, value, child) {
+          return isloading
+              ? Center(child: CircularProgressIndicator())
+              : value.notes.isEmpty
+                  ? Center(child: Lottie.asset('assets/animation/empty.json'))
+                  : Column(
+                      children: [
+                        Expanded(
+                          child: ListView.builder(
+                            itemCount: value.notes.length,
+                            itemBuilder: (context, index) {
+                              final dateFormatter = DateFormat('dd-MM-yyyy');
+                              final note = value.notes[index];
+                              final date =
+                                  dateFormatter.format(note.date.toLocal());
+                              return NoteCard(
+                                onEditPressed: () {
+                                  value.existingNoteIndex = index;
+                                  _addOrEditNote(context, existingNote: note);
+                                },
+                                onDeletePressed: () async {
+                                  await value.deleteEvent(index);
+                                  value.loadEvents();
+                                },
+                                category: note.category,
+                                title: note.title,
+                                description: note.description,
+                                date: date,
+                              );
+                            },
+                          ),
+                        ),
+                      ],
+                    );
+        },
+      ),
       floatingActionButton: FloatingActionButton(
           backgroundColor: primarycolorlight,
           onPressed: () {
-            existingNoteIndex = -1;
+            providerWatch.existingNoteIndex = -1;
             _addOrEditNote(context);
           },
           child: Icon(
@@ -171,6 +174,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _addOrEditNote(BuildContext ctx, {NoteCardModel? existingNote}) async {
+    var providerRead = context.read<NoteCardController>();
     final isEditing = existingNote != null;
     final newNote = isEditing
         ? NoteCardModel.copy(existingNote)
@@ -297,15 +301,19 @@ class _HomeScreenState extends State<HomeScreen> {
                               backgroundColor:
                                   MaterialStatePropertyAll(Colors.grey)),
                           onPressed: () async {
-                            if (_titleController.text.isNotEmpty &&
+                            if (_categoryController.text.isNotEmpty &&
+                                _titleController.text.isNotEmpty &&
                                 _descriptionController.text.isNotEmpty) {
+                              newNote.category = _categoryController.text;
+                              newNote.title = _titleController.text;
+                              newNote.description = _descriptionController.text;
                               if (isEditing) {
-                                await _noteController.updateEvent(
-                                    existingNoteIndex, newNote);
+                                await providerRead.updateEvent(
+                                    providerRead.existingNoteIndex, newNote);
                               } else {
-                                await _noteController.addEvent(newNote);
+                                await providerRead.addEvent(newNote);
                               }
-                              _loadNotes();
+                              providerRead.loadEvents();
                               Navigator.of(context).pop();
                             } else {
                               Navigator.of(context).pop();

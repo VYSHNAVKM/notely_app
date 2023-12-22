@@ -103,7 +103,7 @@ class _NoteCardState extends State<NoteCard> {
                 child: Text(
                   widget.description,
                   textAlign: TextAlign.justify,
-                  maxLines: 3,
+                  maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: subtextdark,
                 ),

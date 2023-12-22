@@ -8,11 +8,11 @@ class NoteCardFullView extends StatefulWidget {
       required this.category,
       required this.title,
       required this.description,
-      required this.date});
+      this.date});
   final String category;
   final String title;
   final String description;
-  final String date;
+  final String? date;
 
   @override
   State<NoteCardFullView> createState() => _NoteCardFullViewState();
@@ -58,7 +58,7 @@ class _NoteCardFullViewState extends State<NoteCardFullView> {
                           style: subtextlight,
                         ),
                       )),
-                  Text(widget.date, style: maintextdark),
+                  Text(widget.date.toString(), style: maintextdark),
                 ],
               ),
               SizedBox(

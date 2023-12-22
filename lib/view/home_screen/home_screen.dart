@@ -62,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       builder: (context) => SearchScreen(),
                     ));
               },
-              icon: Icon(Icons.search))
+              icon: Icon(Icons.search)),
         ],
       ),
       drawer: Drawer(

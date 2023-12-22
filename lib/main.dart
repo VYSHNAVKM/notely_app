@@ -7,8 +7,6 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   Hive.registerAdapter(NoteCardModelAdapter());
-
-  // Reopen 'testBox' with the correct type
   await Hive.openBox<NoteCardModel>('testBox');
   runApp(const MyApp());
 }

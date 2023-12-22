@@ -19,4 +19,7 @@ class NoteCardController {
   Future<void> updateEvent(int index, NoteCardModel updatedNote) async {
     await _noteBox.putAt(index, updatedNote);
   }
+
+
+
 }

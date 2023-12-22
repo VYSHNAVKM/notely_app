@@ -9,6 +9,7 @@ import 'package:notely_app/utils/textstyle_constant.dart';
 import 'package:notely_app/view/home_screen/widgets/drawer_screens/privacypolicy.dart';
 import 'package:notely_app/view/home_screen/widgets/drawer_screens/support.dart';
 import 'package:notely_app/view/home_screen/widgets/note_card/note_card.dart';
+import 'package:notely_app/view/search_screen/search_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -54,11 +55,14 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         actions: [
           IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.search,
-                color: primarycolordark,
-              ))
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SearchScreen(),
+                    ));
+              },
+              icon: Icon(Icons.search))
         ],
       ),
       drawer: Drawer(

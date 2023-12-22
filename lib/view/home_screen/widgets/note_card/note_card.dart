@@ -45,6 +45,11 @@ class _NoteCardState extends State<NoteCard> {
         child: Container(
           decoration: BoxDecoration(
               color: primarycolorlight,
+              border: Border(
+                  left: BorderSide(
+                color: primarycolordark,
+                width: 7,
+              )),
               borderRadius: BorderRadius.circular(20)),
           padding: EdgeInsets.all(10.0),
           child: Column(

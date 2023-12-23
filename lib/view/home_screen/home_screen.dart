@@ -125,7 +125,10 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Consumer<NoteCardController>(
         builder: (context, value, child) {
           return isloading
-              ? Center(child: CircularProgressIndicator())
+              ? Center(
+                  child: CircularProgressIndicator(
+                  color: primarycolordark,
+                ))
               : value.notes.isEmpty
                   ? Center(child: Lottie.asset('assets/animation/empty.json'))
                   : Column(

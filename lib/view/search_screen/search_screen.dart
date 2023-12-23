@@ -22,22 +22,17 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget build(BuildContext context) {
     var noteCardController = context.read<NoteCardController>();
     var searchScreenController = context.read<SearchScreenController>();
-
     return Scaffold(
       backgroundColor: bgcolor,
       appBar: AppBar(
         backgroundColor: bgcolor,
         centerTitle: true,
-        leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: Icon(
-              Icons.arrow_back_ios,
-              color: primarycolordark,
-            )),
+        leading: Icon(
+          Icons.arrow_back_ios,
+          color: bgcolor,
+        ),
         flexibleSpace: Padding(
-          padding: const EdgeInsets.only(top: 50, left: 50, right: 10),
+          padding: const EdgeInsets.only(top: 50, left: 40, right: 30),
           child: TextField(
             autofocus: true,
             controller: searchController,
@@ -49,6 +44,14 @@ class _SearchScreenState extends State<SearchScreen> {
               setState(() {});
             },
             decoration: InputDecoration(
+              prefixIcon: IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: Icon(
+                    Icons.arrow_back_ios,
+                    color: primarycolordark,
+                  )),
               contentPadding: EdgeInsets.all(10),
               hintText: "Search for Notes",
               hintStyle: subtextdark,
@@ -135,9 +138,8 @@ class _SearchScreenState extends State<SearchScreen> {
                     .contains(searchController.text.toLowerCase()))
                 .toList();
             if (filteredNotes.isEmpty) {
-              // Show "Not Found" message when no search results
               return Center(
-                child: Text('No Data', style: maintextdark),
+                child: Lottie.asset('assets/animation/empty.json'),
               );
             }
             return Padding(
@@ -162,7 +164,6 @@ class _SearchScreenState extends State<SearchScreen> {
                                       date: DateFormat('dd-MM-yyyy')
                                           .format(note.date),
                                     )));
-                            // Add the searched query to recent searches when a note is selected
                             searchScreenController
                                 .addRecentSearch(searchController.text);
                           },

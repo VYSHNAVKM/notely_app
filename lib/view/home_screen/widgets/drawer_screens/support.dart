@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:notely_app/utils/color_constant.dart';
 import 'package:notely_app/utils/textstyle_constant.dart';
 
@@ -32,7 +33,7 @@ class _SupportScreenState extends State<SupportScreen> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(10.0),
         child: Column(
           children: [
             Container(
@@ -44,41 +45,30 @@ class _SupportScreenState extends State<SupportScreen> {
                     color: primarycolordark,
                     width: 5,
                   )),
-              width: MediaQuery.of(context).size.width * 0.9,
+              width: MediaQuery.of(context).size.width * 0.95,
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Column(
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'vyshnavkm66@gmail.com',
-                          style: subtextlight,
-                        ),
-                        IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.arrow_forward_ios,
-                              color: primarycolorlight,
-                            ))
-                      ],
+                    Text("Contact Information", style: maintextlight),
+                    SizedBox(
+                      height: 20,
                     ),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
+                        Icon(
+                          Icons.email_outlined,
+                          color: primarycolorlight,
+                        ),
+                        SizedBox(
+                          width: 20,
+                        ),
                         Text(
-                          '+91 7902987407',
+                          'vyshnavkm66@gmial.com',
                           style: subtextlight,
                         ),
-                        IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.arrow_forward_ios,
-                              color: primarycolorlight,
-                            ))
                       ],
-                    ),
+                    )
                   ],
                 ),
               ),

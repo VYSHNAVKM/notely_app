@@ -8,6 +8,7 @@ import 'package:notely_app/utils/color_constant.dart';
 import 'package:notely_app/utils/textstyle_constant.dart';
 import 'package:notely_app/view/home_screen/widgets/drawer_screens/privacypolicy.dart';
 import 'package:notely_app/view/home_screen/widgets/drawer_screens/support.dart';
+import 'package:notely_app/view/home_screen/widgets/drawer_screens/terms_and_conditions.dart';
 import 'package:notely_app/view/home_screen/widgets/note_card/note_card.dart';
 import 'package:notely_app/view/search_screen/search_screen.dart';
 import 'package:provider/provider.dart';
@@ -78,21 +79,21 @@ class _HomeScreenState extends State<HomeScreen> {
                 title: Row(
                   children: [
                     Icon(
-                      Icons.privacy_tip_outlined,
+                      Icons.info_outline,
                       color: primarycolorlight,
                       size: 30,
                     ),
                     SizedBox(
                       width: 10,
                     ),
-                    Text('Privacy Policy', style: subtextlight),
+                    Text('Terms and Conditions', style: subtextlight),
                   ],
                 ),
                 onTap: () {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => PrivacyPolicyScreen(),
+                        builder: (context) => TermsAndConditionScreen(),
                       ));
                 },
               ),
@@ -115,6 +116,28 @@ class _HomeScreenState extends State<HomeScreen> {
                       context,
                       MaterialPageRoute(
                         builder: (context) => SupportScreen(),
+                      ));
+                },
+              ),
+              ListTile(
+                title: Row(
+                  children: [
+                    Icon(
+                      Icons.privacy_tip_outlined,
+                      color: primarycolorlight,
+                      size: 30,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text('Privacy Policy', style: subtextlight),
+                  ],
+                ),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PrivacyPolicyScreen(),
                       ));
                 },
               ),

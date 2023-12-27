@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:notely_app/utils/color_constant.dart';
 import 'package:notely_app/utils/textstyle_constant.dart';
 

@@ -56,7 +56,7 @@ class _SearchScreenState extends State<SearchScreen> {
               hintText: "Search for Notes",
               hintStyle: subtextdark,
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(10),
               ),
             ),
           ),
@@ -131,7 +131,6 @@ class _SearchScreenState extends State<SearchScreen> {
               },
             );
           } else {
-            // Show filtered notes when a search query is entered
             final filteredNotes = noteController.notes
                 .where((note) => note.title
                     .toLowerCase()

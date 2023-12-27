@@ -47,7 +47,7 @@ flutter_icons:
   android: true
   ios: true
   # optionally, as transparency is not allowed on app store
-  # remove_alpha_ios: true
+  remove_alpha_ios: true
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter

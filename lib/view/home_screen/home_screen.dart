@@ -252,7 +252,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             color: primarycolordark,
                           )),
                       centerTitle: true,
-                      title: Text(isEditing ? 'Edit Note' : 'Add a New Note',
+                      title: Text(isEditing ? 'Edit Note' : 'Add Note',
                           style: maintextdark),
                     ),
                     SizedBox(

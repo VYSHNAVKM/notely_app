@@ -42,7 +42,7 @@ class _SupportScreenState extends State<SupportScreen> {
                   gradient: LinearGradient(colors: [Colors.purple, Colors.red]),
                   border: Border.all(
                     color: primarycolordark,
-                    width: 5,
+                    width: 3,
                   )),
               width: MediaQuery.of(context).size.width * 0.95,
               child: Padding(
@@ -63,7 +63,7 @@ class _SupportScreenState extends State<SupportScreen> {
                           width: 20,
                         ),
                         Text(
-                          'vyshnavkm66@gmial.com',
+                          'vyshnavkm66@gmail.com',
                           style: subtextlight,
                         ),
                       ],

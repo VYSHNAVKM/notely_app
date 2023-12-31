@@ -47,7 +47,7 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
                         LinearGradient(colors: [Colors.purple, Colors.red]),
                     border: Border.all(
                       color: primarycolordark,
-                      width: 5,
+                      width: 3,
                     )),
                 width: MediaQuery.of(context).size.width * 0.99,
                 child: Padding(
@@ -103,7 +103,7 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
                       ),
                       Text("6. Third-Party Services", style: maintextlight),
                       Text(
-                        '6.1. NOTELY App may use third-party services for analytics and crash reporting. These services may collect anonymous usage data to help identify and fix app issues.\n6.2. Users are encouraged to review the privacy policies of third-party services used by NOTELY App.',
+                        '6.1 NOTELY App may use third-party services for analytics and crash reporting. These services may collect anonymous usage data to help identify and fix app issues.\n6.2 Users are encouraged to review the privacy policies of third-party services used by NOTELY App.',
                         style: descriptionstyle,
                         textAlign: TextAlign.justify,
                       ),

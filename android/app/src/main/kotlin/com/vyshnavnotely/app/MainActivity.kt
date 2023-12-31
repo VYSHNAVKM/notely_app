@@ -1,4 +1,4 @@
-package com.example.notely_app
+package com.vyshnavnotely.app
 
 import io.flutter.embedding.android.FlutterActivity
 

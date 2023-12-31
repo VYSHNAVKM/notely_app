@@ -19,6 +19,7 @@ class _TermsAndConditionScreenState extends State<TermsAndConditionScreen> {
     return Scaffold(
       backgroundColor: primarycolorlight,
       appBar: AppBar(
+        
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
@@ -28,7 +29,7 @@ class _TermsAndConditionScreenState extends State<TermsAndConditionScreen> {
             color: primarycolordark,
           ),
         ),
-        backgroundColor: primarycolorlight,
+        backgroundColor: bgcolor,
         centerTitle: true,
         title: Text(
           'Terms and Conditions',
@@ -48,7 +49,7 @@ class _TermsAndConditionScreenState extends State<TermsAndConditionScreen> {
                         LinearGradient(colors: [Colors.purple, Colors.red]),
                     border: Border.all(
                       color: primarycolordark,
-                      width: 5,
+                      width: 3,
                     )),
                 width: MediaQuery.of(context).size.width * 0.99,
                 child: Padding(

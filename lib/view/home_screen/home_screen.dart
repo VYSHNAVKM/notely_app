@@ -86,7 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     SizedBox(
                       width: 10,
                     ),
-                    Text('Terms and Conditions.', style: subtextlight),
+                    Text('Terms and Conditions', style: subtextlight),
                   ],
                 ),
                 onTap: () {

@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
-import 'package:notely_app/controller/note_card_controller.dart';
-import 'package:notely_app/model/note_card_model.dart';
-import 'package:notely_app/utils/color_constant.dart';
-import 'package:notely_app/utils/textstyle_constant.dart';
-import 'package:notely_app/view/home_screen/widgets/drawer_screens/privacypolicy.dart';
-import 'package:notely_app/view/home_screen/widgets/drawer_screens/support.dart';
-import 'package:notely_app/view/home_screen/widgets/drawer_screens/terms_and_conditions.dart';
-import 'package:notely_app/view/home_screen/widgets/note_card/note_card.dart';
-import 'package:notely_app/view/search_screen/search_screen.dart';
+import 'package:notely_app/features/home/provider/note_card_controller.dart';
+import 'package:notely_app/features/home/model/note_card_model.dart';
+import 'package:notely_app/features/home/utils/color_constant.dart';
+import 'package:notely_app/features/home/utils/textstyle_constant.dart';
+import 'package:notely_app/features/home/widgets/drawer_screens/privacypolicy.dart';
+import 'package:notely_app/features/home/widgets/drawer_screens/support.dart';
+import 'package:notely_app/features/home/widgets/drawer_screens/terms_and_conditions.dart';
+import 'package:notely_app/features/home/widgets/note_card/note_card.dart';
+import 'package:notely_app/features/home/screens/search_screen.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -50,8 +50,27 @@ class _HomeScreenState extends State<HomeScreen> {
           'NOTELY',
           style: maintextdark,
         ),
-        actions: [
-          IconButton(
+      ),
+      bottomSheet: Container(
+        decoration: BoxDecoration(
+          border: Border.all(width: 5),
+          borderRadius: BorderRadius.circular(20),
+          color: primarycolorlight,
+        ),
+        width: MediaQuery.of(context).size.width * 0.5,
+        height: 60,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.home,
+                size: 30,
+                color: primarycolordark,
+              ),
+            ),
+            IconButton(
               onPressed: () {
                 Navigator.push(
                     context,
@@ -59,8 +78,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       builder: (context) => SearchScreen(),
                     ));
               },
-              icon: Icon(Icons.search)),
-        ],
+              icon: Icon(
+                Icons.search,
+                size: 30,
+                color: primarycolordark,
+              ),
+            ),
+          ],
+        ),
       ),
       drawer: Drawer(
         child: Container(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:notely_app/utils/color_constant.dart';
-import 'package:notely_app/utils/textstyle_constant.dart';
+import 'package:notely_app/features/home/utils/color_constant.dart';
+import 'package:notely_app/features/home/utils/textstyle_constant.dart';
 
 class SupportScreen extends StatefulWidget {
   const SupportScreen({super.key});

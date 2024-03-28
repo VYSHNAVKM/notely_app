@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:notely_app/utils/color_constant.dart';
+import 'package:notely_app/features/home/utils/color_constant.dart';
 
 TextStyle maintextdark = GoogleFonts.poppins(
     fontSize: 24, fontWeight: FontWeight.bold, color: textcolordark);

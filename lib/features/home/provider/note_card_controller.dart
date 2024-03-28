@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:notely_app/model/note_card_model.dart';
+import 'package:notely_app/features/home/model/note_card_model.dart';
 
 class NoteCardController with ChangeNotifier {
   final Box<NoteCardModel> _noteBox = Hive.box('testBox');

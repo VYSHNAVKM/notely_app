@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:notely_app/utils/color_constant.dart';
-import 'package:notely_app/utils/textstyle_constant.dart';
-import 'package:notely_app/view/home_screen/widgets/note_card_fullview/note_card_fullview.dart';
+import 'package:notely_app/features/home/utils/color_constant.dart';
+import 'package:notely_app/features/home/utils/textstyle_constant.dart';
+import 'package:notely_app/features/home/widgets/note_card_fullview/note_card_fullview.dart';
 
 class NoteCard extends StatefulWidget {
   const NoteCard(

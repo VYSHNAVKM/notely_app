@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
-import 'package:notely_app/controller/note_card_controller.dart';
-import 'package:notely_app/controller/search_controller.dart';
-import 'package:notely_app/utils/color_constant.dart';
-import 'package:notely_app/utils/textstyle_constant.dart';
-import 'package:notely_app/view/home_screen/widgets/note_card_fullview/note_card_fullview.dart';
+import 'package:notely_app/features/home/provider/note_card_controller.dart';
+import 'package:notely_app/features/home/provider/search_controller.dart';
+import 'package:notely_app/features/home/utils/color_constant.dart';
+import 'package:notely_app/features/home/utils/textstyle_constant.dart';
+import 'package:notely_app/features/home/widgets/note_card_fullview/note_card_fullview.dart';
 import 'package:provider/provider.dart';
 
 class SearchScreen extends StatefulWidget {

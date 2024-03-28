@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'package:notely_app/controller/note_card_controller.dart';
-import 'package:notely_app/controller/search_controller.dart';
-import 'package:notely_app/model/note_card_model.dart';
-import 'package:notely_app/view/splash_screen/splash_screen.dart';
+import 'package:notely_app/features/home/provider/note_card_controller.dart';
+import 'package:notely_app/features/home/provider/search_controller.dart';
+import 'package:notely_app/features/home/model/note_card_model.dart';
+import 'package:notely_app/features/splash/screens/splash_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() async {

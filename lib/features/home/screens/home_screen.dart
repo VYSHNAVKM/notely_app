@@ -50,54 +50,34 @@ class _HomeScreenState extends State<HomeScreen> {
           'NOTELY',
           style: maintextdark,
         ),
-      ),
-      bottomSheet: Container(
-        decoration: BoxDecoration(
-          border: Border.all(width: 5),
-          borderRadius: BorderRadius.circular(20),
-          color: primarycolorlight,
-        ),
-        width: MediaQuery.of(context).size.width * 0.5,
-        height: 60,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.home,
-                size: 30,
-                color: primarycolordark,
-              ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SearchScreen(),
+                  ));
+            },
+            icon: Icon(
+              Icons.search,
+              size: 30,
+              color: primarycolordark,
             ),
-            IconButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => SearchScreen(),
-                    ));
-              },
-              icon: Icon(
-                Icons.search,
-                size: 30,
-                color: primarycolordark,
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
       drawer: Drawer(
+        backgroundColor: bgcolor,
         child: Container(
-          decoration: BoxDecoration(
-              gradient: LinearGradient(colors: [Colors.purple, Colors.red])),
+          decoration: BoxDecoration(),
           child: Column(
             children: [
               DrawerHeader(
                   child: Center(
                 child: Text(
                   'NOTELY',
-                  style: maintextlight,
+                  style: maintextdark,
                 ),
               )),
               ListTile(
@@ -105,13 +85,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     Icon(
                       Icons.info_outline,
-                      color: primarycolorlight,
+                      color: primarycolordark,
                       size: 30,
                     ),
                     SizedBox(
                       width: 10,
                     ),
-                    Text('Terms and Conditions', style: subtextlight),
+                    Text('Terms and Conditions', style: subtextdark),
                   ],
                 ),
                 onTap: () {
@@ -127,13 +107,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     Icon(
                       Icons.mail_outline_outlined,
-                      color: primarycolorlight,
+                      color: primarycolordark,
                       size: 30,
                     ),
                     SizedBox(
                       width: 10,
                     ),
-                    Text('Support', style: subtextlight),
+                    Text('Support', style: subtextdark),
                   ],
                 ),
                 onTap: () {
@@ -149,13 +129,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     Icon(
                       Icons.privacy_tip_outlined,
-                      color: primarycolorlight,
+                      color: primarycolordark,
                       size: 30,
                     ),
                     SizedBox(
                       width: 10,
                     ),
-                    Text('Privacy Policy', style: subtextlight),
+                    Text('Privacy Policy', style: subtextdark),
                   ],
                 ),
                 onTap: () {
@@ -211,7 +191,9 @@ class _HomeScreenState extends State<HomeScreen> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-          backgroundColor: primarycolorlight,
+          backgroundColor: bgcolor,
+          elevation: 15,
+          splashColor: primarycolordark,
           onPressed: () {
             providerWatch.existingNoteIndex = -1;
             _addOrEditNote(context);

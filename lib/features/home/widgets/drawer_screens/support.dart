@@ -39,7 +39,6 @@ class _SupportScreenState extends State<SupportScreen> {
               decoration: BoxDecoration(
                   color: primarycolorlight,
                   borderRadius: BorderRadius.circular(20),
-                  gradient: LinearGradient(colors: [Colors.purple, Colors.red]),
                   border: Border.all(
                     color: primarycolordark,
                     width: 3,
@@ -49,7 +48,7 @@ class _SupportScreenState extends State<SupportScreen> {
                 padding: const EdgeInsets.all(10.0),
                 child: Column(
                   children: [
-                    Text("Contact Information", style: maintextlight),
+                    Text("Contact Information", style: maintextdark),
                     SizedBox(
                       height: 20,
                     ),
@@ -57,14 +56,14 @@ class _SupportScreenState extends State<SupportScreen> {
                       children: [
                         Icon(
                           Icons.email_outlined,
-                          color: primarycolorlight,
+                          color: primarycolordark,
                         ),
                         SizedBox(
                           width: 20,
                         ),
                         Text(
                           'vyshnavkm66@gmail.com',
-                          style: subtextlight,
+                          style: subtextdark,
                         ),
                       ],
                     )
